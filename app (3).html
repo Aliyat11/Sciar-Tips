@@ -1,0 +1,197 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sciar Tips | Staff alpha</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f5f1fa;color:#291d3e;font:17px/1.5 system-ui,sans-serif}main{max-width:650px;margin:auto;padding:16px 16px 100px}header{background:#35204f;color:white;padding:24px;border-radius:24px}h1,h2,h3,p{margin:0 0 12px}h1{font-size:32px}h2{font-size:23px}small,.source{font-size:.85em;color:#55466a}header small{color:#e4d5fa}section,.panel{background:white;border:1px solid #ddd1ed;border-radius:20px;padding:20px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.metric{background:#eee6f8;padding:14px;border-radius:14px}.metric strong{display:block;font-size:1.5em}button,select,textarea,input{font:inherit}button,select{min-height:48px;border:1px solid #7654a4;border-radius:12px;padding:10px 14px;background:white;color:#35204f}button{cursor:pointer}button.primary,button[aria-current=true]{background:#503078;color:white}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #a56c00;outline-offset:3px}nav{position:sticky;bottom:0;background:white;display:flex;gap:5px;padding:8px;max-width:650px;margin:auto;border-top:1px solid #ddd}nav button{flex:1;padding:8px 3px;font-size:.85em}label{display:block;margin:12px 0 5px}select,textarea{width:100%}textarea{padding:12px;border:1px solid #7654a4;border-radius:12px;min-height:100px}.bar{display:flex;height:18px;border-radius:12px;overflow:hidden;background:#c8b5e5}.bar span{background:#6640a0}.chart{display:flex;align-items:end;gap:4px;height:125px}.chart button{flex:1;min-width:0;padding:0;border:0;border-radius:5px 5px 0 0;background:#8b6ab8;min-height:0;position:relative}.chart button[aria-current=true]{background:#39204f}.chart button span{position:absolute;bottom:-23px;left:0;right:0;font-size:10px;color:#291d3e}.notice{border-left:4px solid #7654a4;padding:12px;background:#f0e9fa;margin:12px 0}.large{font-size:21px}.contrast{background:#000;color:#fff}.contrast section,.contrast .panel,.contrast nav,.contrast .metric,.contrast .notice{background:#111;color:#fff;border-color:#fff}.contrast small,.contrast .source,.contrast .chart button span{color:#fff}.contrast button,.contrast select,.contrast textarea{background:#000;color:#fff;border:2px solid #fff}.contrast button[aria-current=true],.contrast button.primary{background:#fff;color:#000}details{margin-top:12px}summary{cursor:pointer;font-weight:bold}.hidden{display:none} @media(max-width:360px){.grid{grid-template-columns:1fr}main{padding:10px 10px 80px}}
+/* Pastel visual refresh: normal mode only, preserving accessibility overrides. */
+body:not(.contrast){background:radial-gradient(ellipse at 5% 0%,#f8d9ed 0,transparent 45%),radial-gradient(ellipse at 100% 35%,#d7eaff 0,transparent 48%),linear-gradient(145deg,#f8f2ff,#f1faf5 75%,#fff7dc);background-attachment:fixed}
+body:not(.contrast) header{background:linear-gradient(125deg,#d9c5fa,#f8d0e6 55%,#cde5ff);color:#302044;border:1px solid #e3c9ed;box-shadow:0 12px 30px #68458b20;position:relative;overflow:hidden}
+body:not(.contrast) header small{color:#49345f;font-weight:700;letter-spacing:.08em}header h1{letter-spacing:-.055em;font-size:clamp(36px,8vw,48px);line-height:1.1}header p{font-weight:600}header button{position:relative;z-index:1}body:not(.contrast) header:after{content:'✦';position:absolute;right:20px;bottom:-40px;font-size:155px;color:#ffffff80;line-height:1;pointer-events:none}
+body:not(.contrast) section,body:not(.contrast) .panel{border:1px solid #e3d9ef;box-shadow:0 7px 22px #4930650c;border-radius:24px}body:not(.contrast) #weekbox{background:#fff5d2}#weekbox label{margin-top:0;font-weight:700}body:not(.contrast) #content>section:nth-child(1){background:linear-gradient(145deg,#fff,#f5eaff)}body:not(.contrast) #content>section:nth-child(2){background:linear-gradient(145deg,#fff,#e4f5ec)}body:not(.contrast) #content>section:nth-child(3){background:linear-gradient(145deg,#fff,#e4efff)}
+#content>section h2{display:flex;align-items:center;gap:10px;letter-spacing:-.025em}#content>section h2:before{content:'✦';display:grid;place-items:center;flex:0 0 38px;height:38px;border-radius:13px;background:#e2d0fa;color:#523477;font-size:22px}#content>section:nth-child(2) h2:before{content:'◷';background:#c9edda;color:#245b43}#content>section:nth-child(3) h2:before{content:'↗';background:#cde5ff;color:#234e7d}
+body:not(.contrast) .metric{background:#dceaff;border:1px solid #c6daf7;border-radius:18px;padding:16px}body:not(.contrast) .metric:nth-child(2){background:#f9d9e9;border-color:#edc6dc}body:not(.contrast) #simulation .metric:first-child{background:#fff0b9;border-color:#e8d99e}body:not(.contrast) #simulation .metric:nth-child(2){background:#d1efdc;border-color:#b7dfc6}.metric strong{letter-spacing:-.04em}body:not(.contrast) .notice{background:#fff3c7;border-color:#a47b23;border-radius:0 14px 14px 0}body:not(.contrast) .bar{background:#f3b9d5;height:24px}body:not(.contrast) .bar span{background:linear-gradient(90deg,#8260b8,#a68bd9)}
+body:not(.contrast) .chart button{background:#a68bd9}body:not(.contrast) .chart button:nth-child(4n+2){background:#e6a8c8}body:not(.contrast) .chart button:nth-child(4n+3){background:#8cbce8}body:not(.contrast) .chart button:nth-child(4n+4){background:#81bfa0}body:not(.contrast) .chart button[aria-current=true]{background:#503078;outline:2px solid #503078;outline-offset:2px}body:not(.contrast) button.primary{background:linear-gradient(120deg,#503078,#70479c);border:0;box-shadow:0 4px 10px #50307825}body:not(.contrast) nav{background:#fffcff;border:1px solid #e3d9ef;border-radius:22px 22px 0 0;box-shadow:0 -5px 24px #49306516}nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-weight:650;min-width:0;overflow-wrap:anywhere}nav button:before{font-size:20px;line-height:1.2;content:'⌂'}nav button:nth-child(2):before{content:'▥'}nav button:nth-child(3):before{content:'☏'}nav button:nth-child(4):before{content:'⚙'}body:not(.contrast) nav button:not([aria-current=true]){background:#f1e6ff;border-color:transparent}body:not(.contrast) nav button:nth-child(2):not([aria-current=true]){background:#e0edff}body:not(.contrast) nav button:nth-child(3):not([aria-current=true]){background:#fbe0ed}body:not(.contrast) nav button:nth-child(4):not([aria-current=true]){background:#e0f3e7}.contrast #content>section h2:before{background:#111;color:#fff;border:1px solid white}button{transition:box-shadow .15s,transform .15s}button:hover{box-shadow:0 3px 10px #50307822}button:active{transform:translateY(1px)}@media(prefers-reduced-motion:reduce){button{transition:none}} 
+</style></head><body><main><header><small>SCIAR / STAFF ALPHA · HALLORAN’S · 2028</small><h1>Sciar Tips</h1><p id="tag"></p><button id="lang" onclick="toggleLang()">EN ✓ · Switch to PT</button></header><div id="weekbox" class="panel"><label id="weeklabel" for="week"></label><select id="week" onchange="render()"></select></div><div id="content"></div></main><nav id="nav" aria-label="Navigation"></nav><script>
+const D=[
+  {
+    "week": 1,
+    "date": "2028-08-14",
+    "hours": 40.0,
+    "excluded": 11.5,
+    "points": 7.12,
+    "rate": 0.25,
+    "pool": 2779.67,
+    "payout": 59.32,
+    "total": 333.62,
+    "count": 13,
+    "service": 863.17,
+    "days": 6,
+    "late": 16.75
+  },
+  {
+    "week": 2,
+    "date": "2028-08-21",
+    "hours": 38.5,
+    "excluded": 13.0,
+    "points": 6.38,
+    "rate": 0.25,
+    "pool": 2666.34,
+    "payout": 50.57,
+    "total": 336.38,
+    "count": 13,
+    "service": 436.35,
+    "days": 6,
+    "late": 17.5
+  },
+  {
+    "week": 3,
+    "date": "2028-08-28",
+    "hours": 43.5,
+    "excluded": 11.0,
+    "points": 8.12,
+    "rate": 0.25,
+    "pool": 2882.03,
+    "payout": 69.62,
+    "total": 336.12,
+    "count": 13,
+    "service": 687.6800000000001,
+    "days": 6,
+    "late": 14.0
+  },
+  {
+    "week": 4,
+    "date": "2028-09-04",
+    "hours": 41.0,
+    "excluded": 13.5,
+    "points": 6.88,
+    "rate": 0.25,
+    "pool": 2718.97,
+    "payout": 55.04,
+    "total": 339.88,
+    "count": 13,
+    "service": 699.6,
+    "days": 6,
+    "late": 11.5
+  },
+  {
+    "week": 5,
+    "date": "2028-09-11",
+    "hours": 40.0,
+    "excluded": 11.5,
+    "points": 7.12,
+    "rate": 0.25,
+    "pool": 2526.82,
+    "payout": 53.31,
+    "total": 337.5,
+    "count": 13,
+    "service": 723.29,
+    "days": 6,
+    "late": 14.0
+  },
+  {
+    "week": 6,
+    "date": "2028-09-18",
+    "hours": 40.0,
+    "excluded": 12.0,
+    "points": 7.0,
+    "rate": 0.25,
+    "pool": 2576.34,
+    "payout": 52.12,
+    "total": 346.0,
+    "count": 13,
+    "service": 893.12,
+    "days": 6,
+    "late": 11.875
+  },
+  {
+    "week": 7,
+    "date": "2028-09-25",
+    "hours": 40.5,
+    "excluded": 12.0,
+    "points": 7.12,
+    "rate": 0.25,
+    "pool": 2625.28,
+    "payout": 55.14,
+    "total": 339.0,
+    "count": 13,
+    "service": 687.01,
+    "days": 6,
+    "late": 9.25
+  },
+  {
+    "week": 8,
+    "date": "2028-10-02",
+    "hours": 39.0,
+    "excluded": 11.5,
+    "points": 6.88,
+    "rate": 0.25,
+    "pool": 2599.51,
+    "payout": 51.54,
+    "total": 347.0,
+    "count": 13,
+    "service": 854.1700000000001,
+    "days": 6,
+    "late": 13.25
+  },
+  {
+    "week": 9,
+    "date": "2028-10-09",
+    "hours": 48.5,
+    "excluded": 21.5,
+    "points": 6.75,
+    "rate": 0.25,
+    "pool": 2757.18,
+    "payout": 54.98,
+    "total": 338.5,
+    "count": 12,
+    "service": 705.74,
+    "days": 6,
+    "late": 10.375
+  },
+  {
+    "week": 10,
+    "date": "2028-10-16",
+    "hours": 55.0,
+    "excluded": 20.0,
+    "points": 8.75,
+    "rate": 0.25,
+    "pool": 2600.38,
+    "payout": 66.87,
+    "total": 340.25,
+    "count": 12,
+    "service": 922.98,
+    "days": 6,
+    "late": 13.75
+  },
+  {
+    "week": 11,
+    "date": "2028-10-23",
+    "hours": 51.0,
+    "excluded": 20.5,
+    "points": 7.62,
+    "rate": 0.25,
+    "pool": 2516.52,
+    "payout": 56.05,
+    "total": 342.12,
+    "count": 12,
+    "service": 704.27,
+    "days": 6,
+    "late": 9.625
+  },
+  {
+    "week": 12,
+    "date": "2028-10-30",
+    "hours": 50.5,
+    "excluded": 20.5,
+    "points": 7.5,
+    "rate": 0.25,
+    "pool": 2505.09,
+    "payout": 54.46,
+    "total": 345.0,
+    "count": 12,
+    "service": 827.31,
+    "days": 6,
+    "late": 10.625
+  }
+];let pt=false,page=0,large=false,contrast=false;const $=id=>document.getElementById(id), L=(a,b)=>pt?b:a, euro=n=>new Intl.NumberFormat(pt?'pt-PT':'en-IE',{style:'currency',currency:'EUR'}).format(n), num=n=>Number(n.toFixed(2)).toLocaleString(pt?'pt-PT':'en-IE'), sum=(a,k)=>a.reduce((s,x)=>s+x[k],0);let records=[];try{records=JSON.parse(localStorage.getItem('sciar-demo-concerns')||'[]')}catch(e){};let draft='',attach=false,mode='all';
+function toggleLang(){pt=!pt;document.documentElement.lang=pt?'pt':'en';render()};function go(n){page=n;render();window.scrollTo(0,0)};function metric(a,b){return `<div class="metric"><small>${a}</small><strong>${b}</strong></div>`}function src(s){return `<p class="source">${L('Observed data / calculation','Dados observados / cálculo')}: ${s}</p>`}function personal(w){return `payouts.csv · staff_id = S12 · week = ${w.week} · n=1`};function group(w){return `payouts.csv · week = ${w.week} · n=${w.count} (${L('all staff','toda a equipa')})`};function evidence(w){return `${L('Week','Semana')} ${w.week}: ${L('hours worked','horas trabalhadas')} ${num(w.hours)}; ${L('excluded after 23:00','excluídas após 23:00')} ${num(w.excluded)}; ${L('tips','gorjetas')} ${euro(w.payout)}. ${personal(w)}`};function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){let w=D[Number($('week').value||12)-1];$('tag').textContent=L('Understand. Explore. Speak up.','Compreender. Explorar. Falar.');$('lang').textContent=L('EN ✓ · Switch to PT','PT ✓ · Switch to EN');$('lang').setAttribute('aria-label',L('Current language: English. Switch to Portuguese','Idioma atual: português. Mudar para inglês'));$('weeklabel').textContent=L('Choose your pilot week','Escolha a semana do piloto');$('week').innerHTML=D.map(x=>`<option value="${x.week}" ${x.week===w.week?'selected':''}>${L('Week','Semana')} ${x.week} · ${x.date}</option>`).join('');$('weekbox').hidden=page===3;$('nav').innerHTML=[L('Home','Início'),L('Earnings','Ganhos'),L('Concerns','Questões'),L('Settings','Definições')].map((s,i)=>`<button onclick="go(${i})" aria-current="${page===i}">${s}</button>`).join('');let h='';if(page===0){let total=sum(D,'hours'),late=sum(D,'excluded'),pay=sum(D,'payout'),a=D.slice(0,8),b=D.slice(8),dh=(sum(b,'hours')/4/(sum(a,'hours')/8)-1)*100,dp=(sum(b,'payout')/4/(sum(a,'payout')/8)-1)*100;h=`<section><h2>${L('Hello, Rafael','Olá, Rafael')}</h2><small>${L('Your recorded weekly tips','As suas gorjetas semanais registadas')}</small><h1>${euro(w.payout)}</h1><div class="grid">${metric(L('Hours worked','Horas trabalhadas'),num(w.hours))}${metric(L('Excluded hours','Horas excluídas'),num(w.excluded))}</div>${src(personal(w))}<button class="primary" onclick="go(1)">${L('Understand my payout','Compreender o pagamento')}</button></section><section><h2>${L('Hidden Hours Insight','Horas invisíveis')}</h2><p>${L('Across the 12-week pilot, this share of your hours earned no tip points:','Durante as 12 semanas, esta parte das suas horas não gerou pontos:')}</p><h1>${num(late/total*100)}%</h1><div class="bar"><span style="width:${(total-late)/total*100}%"></span></div><p>${num(late)} / ${num(total)} h · ${L('Total tips','Total de gorjetas')} ${euro(pay)}</p>${src('payouts.csv · S12 · weeks 1–12 · n=12 · sum(hours_after_2300) / sum(hours) × 100')}<div class="notice">${L('Weeks 9–12 compared with weeks 1–8: average weekly hours changed by','Semanas 9–12 comparadas com 1–8: variação média semanal de horas')} ${num(dh)}%; ${L('average tips changed by','variação média de gorjetas')} ${num(dp)}%. ${L('Excluded hours are one possible explanation, not proof of causation.','As horas excluídas são uma explicação possível, não uma prova de causalidade.')}</div>${src('payouts.csv · S12 · weeks 1–8 (n=8), 9–12 (n=4) · (later mean / earlier mean − 1) × 100')}</section>`}if(page===1){h=`<section><h2>${L('My earnings','Os meus ganhos')}</h2><div class="chart" aria-label="${L('Weekly payout chart','Gráfico de gorjetas semanais')}">${D.map(x=>`<button style="height:${x.payout/Math.max(...D.map(y=>y.payout))*100}%" aria-label="${L('Week','Semana')} ${x.week}: ${euro(x.payout)}" aria-current="${x.week===w.week}" onclick="$('week').value=${x.week};render()"><span>${x.week}</span></button>`).join('')}</div><p style="margin-top:30px">${L('Selected payout','Pagamento selecionado')}: <strong>${euro(w.payout)}</strong></p>${src('payouts.csv · S12 · weeks 1–12 · n=12')}</section><section><h2>${L('How your tips work','Como funcionam as gorjetas')}</h2><p>${num(w.hours)} − ${num(w.excluded)} = <b>${num(w.hours-w.excluded)} h</b> ${L('eligible','elegíveis')}</p><p>${num(w.hours-w.excluded)} × ${w.rate} ≈ ${num(w.points)} ${L('recorded points','pontos registados')}</p><p>${euro(w.pool)} × ${num(w.points)} ÷ ${num(w.total)} ≈ ${euro(w.pool*w.points/w.total)}</p><p>${L('Recorded payout','Pagamento registado')}: <b>${euro(w.payout)}</b>. ${L('Rounded points can cause small differences.','O arredondamento dos pontos pode causar pequenas diferenças.')}</p>${src(personal(w)+'; '+group(w)+' · sum(points)')}<details><summary>${L('Current role rates','Taxas atuais por função')}</summary><p>${L('Floor manager 1.5; server/bar 1; chef 0.5; kitchen porter 0.25. Hours after 23:00 earn no points.','Gerente de sala 1,5; empregado de mesa/bar 1; cozinheiro 0,5; ajudante de cozinha 0,25. Horas após as 23:00 não geram pontos.')}</p><small>README.md · Halloran’s split rule</small></details><p>${L('Separate service charges','Taxas de serviço separadas')}: ${euro(w.service)}. ${L('Not included in the tip pool.','Não incluídas no fundo de gorjetas.')}</p>${src('takings.csv · week = '+w.week+' · n='+w.days+' · sum(service_charge_eur)')}</section><section><h2>${L('Tip Time Machine','Simulador de gorjetas')}</h2><p>${L('What if the rule included late hours for everyone? Or only your own late hours?','E se a regra incluísse horas tardias de todos? Ou apenas as suas?')}</p><label for="scenario">${L('Scenario','Cenário')}</label><select id="scenario" onchange="mode=this.value;simulate()"><option value="all">${L('All staff: include late hours','Toda a equipa: incluir horas tardias')}</option><option value="own">${L('Only my late hours (illustrative exception)','Apenas as minhas horas (exceção ilustrativa)')}</option><option value="current">${L('Current rule','Regra atual')}</option></select><div id="simulation" aria-live="polite"></div><p class="notice">${L('Hypothetical only. The pool stays fixed; changing points redistributes it. No money is owed or paid by this simulator.','Apenas hipotético. O fundo mantém-se fixo; alterar pontos redistribui-o. Não há pagamento nem dívida.')}</p>${src(personal(w)+'; '+group(w)+' · sum(hours_after_2300 × points_per_hour)')}</section>`}if(page===2){h=`<section><h2>${L('Raise a concern','Apresentar uma questão')}</h2><p class="notice">${L('Demo only. Saved on this browser, not sent to Sciar or your employer. Anyone with access to this browser may read it. Do not enter sensitive information. In a real product, an independent Sciar reviewer could receive concerns with consent; owners would not see individual reports.','Apenas demonstração. Guardado neste navegador, não enviado à Sciar ou ao empregador. Quem aceder ao navegador pode ler. Não introduza dados sensíveis. Num produto real, um revisor independente da Sciar poderia receber questões com consentimento; os proprietários não veriam relatos individuais.')}</p><label for="draft">${L('Describe your concern','Descreva a sua questão')}</label><textarea id="draft" oninput="draft=this.value">${esc(draft)}</textarea><label><input type="checkbox" ${attach?'checked':''} onchange="attach=this.checked;render()"> ${L('Attach my selected week evidence','Anexar dados da semana selecionada')}</label><div class="notice">${esc(evidence(w))}</div><button class="primary" onclick="saveConcern()">${L('Save concern locally','Guardar questão localmente')}</button><p id="status" role="status"></p></section><section><h2>${L('Concern history','Histórico de questões')}</h2>${records.length?records.map((r,i)=>`<div class="panel"><b>${esc(r.id)} · ${L('Saved locally','Guardado localmente')}</b><p>${esc(r.text)}</p><small>${esc(r.evidence||'')}</small><p><button onclick="removeConcern(${i})">${L('Delete','Eliminar')}</button></p></div>`).join(''):L('No concerns saved yet.','Nenhuma questão guardada.')}</section>`}if(page===3){h=`<section><h2>${L('Accessibility settings','Definições de acessibilidade')}</h2><button onclick="toggleLang()">${L('Switch to Portuguese','Mudar para inglês')}</button><label><input type="checkbox" ${large?'checked':''} onchange="large=this.checked;document.body.classList.toggle('large',large)"> ${L('Larger text','Texto maior')}</label><label><input type="checkbox" ${contrast?'checked':''} onchange="contrast=this.checked;document.body.classList.toggle('contrast',contrast)"> ${L('High contrast','Alto contraste')}</label><p>${L('Fictional teaching case. No login, live payments or secure reporting. Only Rafael’s personal records and team aggregates are embedded.','Caso fictício. Sem autenticação, pagamentos reais ou comunicação segura. Apenas dados pessoais de Rafael e totais da equipa.')}</p></section>`}$('content').innerHTML=h;if(page===1){$('scenario').value=mode;simulate()}}
+function simulate(){let w=D[Number($('week').value)-1],add=mode==='current'?0:w.excluded*w.rate,den=w.total+(mode==='all'?w.late:add),v=w.pool*(w.points+add)/den,base=w.pool*w.points/w.total;$('simulation').innerHTML=`<div class="grid">${metric(L('Model baseline','Base do modelo'),euro(base))}${metric(L('Simulated payout','Pagamento simulado'),euro(v))}</div><p>${L('Difference from model baseline','Diferença face à base')}: ${euro(v-base)}</p><small>${euro(w.pool)} × ${num(w.points+add)} ÷ ${num(den)} · ${L('uses recorded rounded points','usa pontos registados arredondados')}</small>`}
+function saveConcern(){if(!draft.trim()&&!attach){$('status').textContent=L('Enter a concern or attach evidence.','Introduza uma questão ou anexe dados.');return}let w=D[Number($('week').value)-1],r={id:'SC-'+Date.now(),text:draft.trim(),evidence:attach?evidence(w):''};try{localStorage.setItem('sciar-demo-concerns',JSON.stringify([...records,r]));records.push(r);draft='';attach=false;render();$('status').textContent=L('Saved locally.','Guardado localmente.')}catch(e){$('status').textContent=L('Storage unavailable; nothing saved.','Armazenamento indisponível; nada guardado.')}}function removeConcern(i){try{let next=records.filter((_,j)=>i!==j);localStorage.setItem('sciar-demo-concerns',JSON.stringify(next));records=next;render()}catch(e){alert(L('Unable to delete.','Não foi possível eliminar.'))}}pt=false;document.documentElement.lang="en";render();</script></body></html>

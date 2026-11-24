@@ -1,7 +1,8 @@
 # Sciar-Tips
 
 
-
+GitHub Pages: 
+GitHub Repository: https://github.com/Aliyat11/Sciar-Tips
 
 
 Research Question:  How can transparent tip distribution and private concern reporting improve employee trust and address workplace power imbalances? 
